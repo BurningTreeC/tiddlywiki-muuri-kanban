@@ -135,7 +135,7 @@ muuri-tiddler-width: 1
 	transition: transform 0.2s ease-in-out;
 }
 .tc-board-column-action:hover {
-  transform: rotateZ(180deg);
+	transform: rotateZ(180deg);
 }
 .tc-board-column-action.tc-edit, .tc-board-column-action.tc-delete {
 	transition: transform 0.4s ease-in-out;
@@ -145,51 +145,51 @@ muuri-tiddler-width: 1
 }
 
 .tc-board-column-action:focus {
-  outline: 0;
+	outline: 0;
 }
 
 .tc-board-column-action svg {
-  flex-grow: 1;
-  pointer-events: none;
+	flex-grow: 1;
+	pointer-events: none;
 }
 
 .tc-board-column-items-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  overflow: hidden;
-  overflow-y: auto;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	overflow: hidden;
+	overflow-y: auto;
 }
 .tc-board-column-items {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  min-height: 100%;
-  border-bottom: 1.5rem solid transparent;
+	position: absolute;
+	left: 0;
+ 	top: 0;
+	width: 100%;
+	min-height: 100%;
+	border-bottom: 1.5rem solid transparent;
 }
 
 .tc-board-item {
-  position: absolute;
-  width: calc(100% - 1rem);
-  margin: 0.5rem 0.5rem 0 0.5rem;
-  z-index: 10;
+	position: absolute;
+	width: calc(100% - 1rem);
+	margin: 0.5rem 0.5rem 0 0.5rem;
+	z-index: 10;
 }
 .tc-board-item.tc-muuri-releasing {
-  z-index: 11;
+	z-index: 11;
 }
 .tc-board-item.tc-muuri-dragging {
-  z-index: 12;
-  cursor: move;
+	z-index: 12;
+	cursor: move;
 }
 .tc-board-item.tc-muuri-hidden {
-  z-index: 8;
+	z-index: 8;
 }
 .tc-board-item.muuri-item-placeholder {
-  z-index: 9;
-  margin: 0;
-  opacity: 0.7;
+	z-index: 9;
+	margin: 0;
+	opacity: 0.7;
 }
 
 .tc-board-item img, .tc-board-item hr {
@@ -202,14 +202,14 @@ muuri-tiddler-width: 1
 }
 
 .tc-board-item-content {
-  position: relative;
-  padding: 0.5rem;
-  background: <<colour tiddler-background>>;
-  border: 0.2rem solid <<colour tag-background>>;
-  color: <<colour foreground>>;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 400;
+	position: relative;
+	padding: 0.5rem;
+	background: <<colour tiddler-background>>;
+	border: 0.2rem solid <<colour tag-background>>;
+	color: <<colour foreground>>;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: 400;
 }
 .tc-board-item-content input {
 	width: 100%;
@@ -222,65 +222,65 @@ muuri-tiddler-width: 1
 	border-radius: 2px;
 }
 .tc-board-item.muuri-item-placeholder .tc-board-item-content {
-  border-style: dashed;
-  border-color: <<colour primary>>;
+	border-style: dashed;
+	border-color: <<colour primary>>;
 }
 .tc-board-item.editing .tc-board-item-content {
-  border-color: <<colour primary>>;
+	border-color: <<colour primary>>;
 }
 .tc-board-item:focus-within .tc-board-item-content {
-  border: 0.2rem solid <<colour primary>>;
-  padding: 0.5rem;
+	border: 0.2rem solid <<colour primary>>;
+	padding: 0.5rem;
 }
 .tc-board-item-title {
-  font-size: 1rem;
-  line-height: 1.2;
-  word-break: break-word;
-  caret-color: <<colour primary>>;
-  outline: none;
-  outline-offset: 0.5rem;
-  min-height: calc(1rem * 1.2);
+	font-size: 1rem;
+	line-height: 1.2;
+	word-break: break-word;
+	caret-color: <<colour primary>>;
+	outline: none;
+	outline-offset: 0.5rem;
+	min-height: calc(1rem * 1.2);
 }
 .tc-board-item-handle {
-  position: absolute;
-  left: -0.25rem;
-  right: -0.25rem;
-  top: -0.25rem;
-  bottom: -0.25rem;
-  border-radius: 0.5rem;
-  cursor: move;
+	position: absolute;
+	left: -0.25rem;
+	right: -0.25rem;
+	top: -0.25rem;
+	bottom: -0.25rem;
+	border-radius: 0.5rem;
+	cursor: move;
 }
 .tc-board-item.tc-editing .tc-board-item-handle {
-  display: none;
+	display: none;
 }
 .tc-board-item-action {
-  position: absolute;
-  display: flex;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0rem;
-  opacity: 0;
-  transform: scale(0, 0);
-  transition: transform 0.3s 0s ease-out, opacity 0.3s 0s linear;
+	position: absolute;
+	display: flex;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0rem;
+	opacity: 0;
+	transform: scale(0, 0);
+	transition: transform 0.3s 0s ease-out, opacity 0.3s 0s linear;
 }
 .tc-board-item-action.tc-edit {
-  right: -1rem;
-  top: -1rem;
+	right: -1rem;
+	top: -1rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-edit {
-  right: -1rem;
-  top: -1rem;
+	right: -1rem;
+	top: -1rem;
 }
 .tc-board-item-action.tc-delete {
-  right: -1rem;
-  bottom: -0.5rem;
+	right: -1rem;
+	bottom: -0.5rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-delete {
-  right: -1rem;
-  bottom: -0.5rem;
+	right: -1rem;
+	bottom: -0.5rem;
 }
 .tc-board-item.tc-editing .tc-board-item-action.tc-delete {
-  display: none;
+	display: none;
 }
 .tc-board-item-action.tc-close {
 	left: -0.5rem;
@@ -293,25 +293,25 @@ muuri-tiddler-width: 1
 .tc-board-item:focus .tc-board-item-action,
 .tc-board-item.tc-muuri-dragging .tc-board-item-action,
 .tc-board-item.tc-muuri-releasing .tc-board-item-action {
-  opacity: 1;
-  transform: scale(1, 1);
-  transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s linear;
+	opacity: 1;
+	transform: scale(1, 1);
+	transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s linear;
 }
 .tc-board-item.tc-editing .tc-board-item-action:hover,
 .tc-board-item:hover .tc-board-item-action:hover,
 .tc-board-item:focus .tc-board-item-action:hover,
 .tc-board-item.tc-muuri-dragging .tc-board-item-action:hover,
 .tc-board-item.tc-muuri-releasing .tc-board-item-action:hover {
-  transform: scale(1.2, 1.2);
+	transform: scale(1.2, 1.2);
 }
 .tc-board-item-action-icon {
-  flex-grow: 1;
-  pointer-events: none;
+	flex-grow: 1;
+	pointer-events: none;
 }
 .tc-board-item.tc-editing .tc-board-item-action-icon.tc-icon-edit,
 .tc-board-item-action-icon.tc-icon-save {
-  display: none;
+	display: none;
 }
 .tc-board-item.tc-editing .tc-board-item-action-icon.tc-icon-save {
-  display: block;
+	display: block;
 }

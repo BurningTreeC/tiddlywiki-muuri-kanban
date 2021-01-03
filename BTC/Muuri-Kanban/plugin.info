@@ -3,6 +3,6 @@
 	"description": "A Kanban based on Muuri",
 	"author": "Simon Huber",
 	"version": "0.1.0",
-	"list": "readme license usage",
+	"list": "readme license",
 	"muuri-tiddler-width": "1"
 }

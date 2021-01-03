@@ -1,0 +1,63 @@
+title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
+
+\whitespace trim
+\define get-history() $:/HistoryList/KanbanColumn/$(currentTiddler)$
+\define get-classes() tc-board-column $(currentTiddler)$
+\define get-board-column-styles() width: calc(100% / $(amount)$);
+\define get-styles() background-color: $(bgColor)$; border-color: $(bgColor)$; color: $(foregroundColor)$; fill: $(foregroundColor)$;
+\define get-foreground-color-inner(colour,colourA,colourB)
+<$macrocall $name="contrastcolour" target="""$colour$""" colourA="""$colourA$""" colourB="""$colourB$"""/>
+\end
+\define get-foreground-color(palette)
+<$macrocall $name="get-foreground-color-inner" colour={{!!color}} colourA={{$palette$##foreground}} colourB={{$palette$##background}}/>
+\end
+<$vars bgColor={{!!color}} palette={{$:/palette}}>
+<$wikify name="foregroundColor" text="""<$macrocall $name="get-foreground-color" palette=<<palette>>/>""">
+<$navigator story=<<currentTiddler>> history=<<get-history>>>
+	<div class=<<get-classes>>>
+		<div class="tc-board-column-content">
+			<$droppable actions="""<$action-navigate $to=<<actionTiddler>>/>""">
+				<div class="tc-board-column-header-wrapper">
+					<div class="tc-board-column-header" style=<<get-styles>>>
+						<div class="tc-board-column-title">
+							<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
+								<$transclude field="title"/>
+								""">
+								<$transclude field="caption"/>
+							</$list>
+						</div>
+						<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>>>
+							<$action-sendmessage $message="tm-new-tiddler"/>
+							{{$:/core/images/new-button}}
+						</$button>
+						<$navigator story="$:/KanbanList" history="$:/KanbanHistoryList">
+							<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>>>
+								<$action-sendmessage $message="tm-edit-tiddler"/>
+								{{$:/core/images/edit-button}}
+							</$button>
+							<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>>>
+								<$action-sendmessage $message="tm-close-tiddler"/>
+								{{$:/core/images/close-button}}
+							</$button>
+							<$button class="tc-btn-invisible tc-board-column-action tc-delete" style=<<get-styles>>>
+								<$action-sendmessage $message="tm-delete-tiddler"/>
+								{{$:/core/images/delete-button}}
+							</$button>
+						</$navigator>
+					</div>
+				</div>
+			</$droppable>
+			<div class="tc-board-column-items-container">
+				<$set name="tv-muuri-story-list" value=<<currentTiddler>>>
+					<$set name="tv-muuri-drop-actions" value={{!!drop-actions}}>
+						<div class="tc-board-column-items">
+							<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate" storyViewConfig="$:/config/kanban/items/"/>
+						</div>
+					</$set>
+				</$set>
+			</div>
+		</div>
+	</div>
+</$navigator>
+</$wikify>
+</$vars>

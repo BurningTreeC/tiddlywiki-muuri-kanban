@@ -1,0 +1,33 @@
+title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
+
+<div class="tc-board-item">
+	<div class="tc-board-item-content">
+		<div class="tc-board-item-title">
+			<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
+				<$transclude field="title"/>
+				""">
+				<$transclude field="caption"/>
+			</$list>
+			<hr class="simple">
+			<$transclude mode="block"/>
+		</div>
+		<div class="tc-board-item-action tc-edit">
+			<$button class="tc-btn-invisible">
+				<$action-sendmessage $message="tm-edit-tiddler"/>
+				{{$:/core/images/edit-button}}
+			</$button>
+		</div>
+		<div class="tc-board-item-action tc-close">
+			<$button class="tc-btn-invisible">
+				<$action-sendmessage $message="tm-close-tiddler"/>
+				{{$:/core/images/close-button}}
+			</$button>
+		</div>
+		<div class="tc-board-item-action tc-delete">
+			<$button class="tc-btn-invisible">
+				<$action-sendmessage $message="tm-delete-tiddler"/>
+				{{$:/core/images/delete-button}}
+			</$button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate
+
+\whitespace trim
+\define get-history() $:/HistoryList/Kanban/$(currentTiddler)$
+\define get-styles() background-color: $(bgColor)$; border-color: $(bgColor)$; fill: $(foregroundColor)$;
+\define get-foreground-color-inner(colour,colourA,colourB)
+<$macrocall $name="contrastcolour" target="""$colour$""" colourA="""$colourA$""" colourB="""$colourB$"""/>
+\end
+\define get-foreground-color(palette)
+<$macrocall $name="get-foreground-color-inner" colour={{!!color}} colourA={{$palette$##foreground}} colourB={{$palette$##background}}/>
+\end
+<$vars bgColor={{!!color}} palette={{$:/palette}}>
+<$wikify name="foregroundColor" text="""<$macrocall $name="get-foreground-color" palette=<<palette>>/>""">
+	<div class="tc-board-column">
+		<div class="tc-board-column-content">
+			<div class="tc-board-column-header-wrapper">
+				<div class="tc-board-column-header tc-board-column-edit-header" style=<<get-styles>>>
+					<div class="tc-board-column-title">
+						<$keyboard key="((save-tiddler))" message="tm-save-tiddler">
+							<$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
+								<$edit-text field="draft.title" tag="input" placeholder=" title" focus="true"/><br>
+								<$edit-text field="caption" tag="input" placeholder=" caption"/><br>
+								<$edit-text field="drop-actions" tag="input" placeholder=" drop-actions"/><br>
+								<$edit-text field="color" tag="input"/>
+							</$keyboard>
+						</$keyboard>
+					</div>
+					<div style="position: absolute; right: 0; top: 0;">
+						<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>>>
+							<$action-sendmessage $message="tm-save-tiddler"/>
+							{{$:/core/images/save-button}}
+						</$button>
+						<$button class="tc-btn-invisible tc-board-column-action tc-delete" style=<<get-styles>>>
+							<$action-sendmessage $message="tm-cancel-tiddler"/>
+							{{$:/core/images/cancel-button}}
+						</$button>
+					</div>
+				</div>
+			</div>
+			<$navigator story=<<currentTiddler>> history=<<get-history>>>
+				<div class="tc-board-column-items-container">
+					<$set name="tv-muuri-story-list" value=<<currentTiddler>>>
+						<$set name="tv-muuri-drop-actions" value={{!!drop-actions}}>
+							<div class="tc-board-column-items">
+								<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate" storyViewConfig="$:/config/kanban/items/"/>
+							</div>
+						</$set>
+					</$set>
+				</div>
+			</$navigator>
+		</div>
+	</div>
+</$wikify>
+</$vars>

@@ -1,0 +1,27 @@
+title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate
+
+<div class="tc-board-item">
+	<div class="tc-board-item-content">
+		<div class="tc-board-item-title">
+			<$keyboard key="((save-tiddler))" message="tm-save-tiddler">
+				<$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
+					<$edit-text field="draft.title" tag="input" placeholder=" title" focus="true"/><br>
+					<$edit-text field="caption" tag="input" placeholder=" caption"/><br>
+					<$edit field="text" default="" placeholder=" text"/>
+				</$keyboard>
+			</$keyboard>
+		</div>
+		<div class="tc-board-item-action tc-edit">
+			<$button class="tc-btn-invisible">
+				<$action-sendmessage $message="tm-save-tiddler"/>
+				{{$:/core/images/save-button}}
+			</$button>
+		</div>
+		<div class="tc-board-item-action tc-delete">
+			<$button class="tc-btn-invisible">
+				<$action-sendmessage $message="tm-cancel-tiddler"/>
+				{{$:/core/images/cancel-button}}
+			</$button>
+		</div>
+	</div>
+</div>

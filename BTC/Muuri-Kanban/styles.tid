@@ -2,6 +2,11 @@ title: $:/plugins/BTC/Muuri-Kanban/css
 tags: $:/tags/Stylesheet
 muuri-tiddler-width: 1
 
+\define set-board-column-width()
+[data-board-container-title="$(cssEscapedTitle)$"] .tc-board-column {
+	width: calc(100% / $(count)$);
+}
+\end
 .tc-board-container {
 	position: relative;
 	height: 75vh;
@@ -39,10 +44,17 @@ muuri-tiddler-width: 1
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: calc(100% / <<amount>>);
 	min-height: 100%;
 	z-index: 1;
 }
+
+<$list filter="[all[tiddlers+shadows]has[list]]" variable="listItem">
+	<$vars count={{{ [list<listItem>count[]] }}} cssEscapedTitle={{{ [<listItem>escapecss[]] }}}>
+
+		<<set-board-column-width>>
+
+	</$set>
+</$list>
 
 .tc-board-column.tc-muuri-releasing {
 	z-index: 2;

@@ -30,7 +30,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 							<$action-sendmessage $message="tm-new-tiddler"/>
 							{{$:/core/images/new-button}}
 						</$button>
-						<$navigator story="$:/KanbanList" history="$:/KanbanHistoryList">
+						<$navigator story=<<tv-muuri-story-list>> history=<<tv-muuri-history-list>>>
 							<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>>>
 								<$action-sendmessage $message="tm-edit-tiddler"/>
 								{{$:/core/images/edit-button}}

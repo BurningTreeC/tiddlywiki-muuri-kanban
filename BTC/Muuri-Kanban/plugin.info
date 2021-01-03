@@ -1,0 +1,8 @@
+{
+	"title": "$:/plugins/BTC/Muuri-Kanban",
+	"description": "A Kanban based on Muuri",
+	"author": "Simon Huber",
+	"version": "0.1.0",
+	"list": "readme license usage",
+	"muuri-tiddler-width": "1"
+}

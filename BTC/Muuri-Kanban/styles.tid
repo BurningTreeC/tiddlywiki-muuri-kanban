@@ -1,0 +1,317 @@
+title: $:/plugins/BTC/Muuri-Kanban/css
+tags: $:/tags/Stylesheet
+muuri-tiddler-width: 1
+
+.tc-board-container {
+	position: relative;
+	height: 75vh;
+}
+
+<$list filter="[all[tiddlers]prefix[$:/state/popup/more-]limit[1]]">
+
+.tc-board-container {
+	z-index: -1;
+}
+
+</$list>
+
+.tc-kanban-droppable {
+	position: relative;
+	width: 100%;
+	font-size: 1.5rem;
+	border: 0.2rem dashed <<colour muted-foreground>>;
+	border-radius: 4px;
+}
+
+.tc-board {
+	position: relative;
+	display: flex;
+	height: 100%;
+	min-width: 100%;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.tc-board-column {
+	display: flex;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: calc(100% / <<amount>>);
+	min-height: 100%;
+	z-index: 1;
+}
+
+.tc-board-column.tc-muuri-releasing {
+	z-index: 2;
+}
+.tc-board-column.tc-muuri-dragging {
+	z-index: 3;
+	cursor: move;
+}
+
+.tc-board-column-content {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	padding: 0.5rem;
+}
+
+.tc-board-column-header {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 2.5rem;
+	width: 100%;
+	min-height: 2.5rem;
+	font-size: 1rem;
+	line-height: 2.5rem;
+	overflow: hidden;
+	padding: 0 1rem;
+	text-align: center;
+	font-weight: 700;
+	font-style: italic;
+	background: <<colour tiddler-background>>;
+	color: <<colour foreground>>;
+	border-radius: 0.2rem;
+	border: 0.2rem solid <<colour foreground>>;
+}
+.tc-board-column-header.tc-board-column-edit-header {
+	height: auto;
+	border: 0.2rem solid <<colour foreground>>;
+}
+
+.tc-board-column-header input:not([type="color"]) {
+	border: 1px solid <<colour muted-foreground>>;
+	border-radius: 2px;
+	width: 80%;
+}
+.tc-board-column-header-wrapper {
+	position: relative;
+	display: flex;
+	font-size: 1rem;
+	font-weight: 700;
+	height: auto;
+}
+
+.tc-board-column-title {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	outline: none;
+	flex-grow: 1;
+	text-align: left;
+	margin-left: -2rem;
+	padding-left: 2rem;
+}
+
+.tc-board-column-action {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin: 0;
+	border: 0;
+	width: 2rem;
+	height: 2rem;
+	min-width: 2rem;
+	min-height: 2rem;
+	padding: 0.3rem;
+	border-radius: 1rem;
+	white-space: nowrap;
+	cursor: pointer;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	transform: rotateZ(0deg);
+	transition: transform 0.2s ease-in-out;
+}
+.tc-board-column-action:hover {
+  transform: rotateZ(180deg);
+}
+.tc-board-column-action.tc-edit, .tc-board-column-action.tc-delete {
+	transition: transform 0.4s ease-in-out;
+}
+.tc-board-column-action.tc-edit:hover, .tc-board-column-action.tc-delete:hover {
+	transform: rotateZ(360deg);
+}
+
+.tc-board-column-action:focus {
+  outline: 0;
+}
+
+.tc-board-column-action svg {
+  flex-grow: 1;
+  pointer-events: none;
+}
+
+.tc-board-column-items-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.tc-board-column-items {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  border-bottom: 1.5rem solid transparent;
+}
+
+.tc-board-item {
+  position: absolute;
+  width: calc(100% - 1rem);
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  z-index: 10;
+}
+.tc-board-item.tc-muuri-releasing {
+  z-index: 11;
+}
+.tc-board-item.tc-muuri-dragging {
+  z-index: 12;
+  cursor: move;
+}
+.tc-board-item.tc-muuri-hidden {
+  z-index: 8;
+}
+.tc-board-item.muuri-item-placeholder {
+  z-index: 9;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.tc-board-item img, .tc-board-item hr {
+	pointer-events: none;
+	max-width: 100%;
+}
+
+.tc-board-item svg {
+	max-width: 100%;
+}
+
+.tc-board-item-content {
+  position: relative;
+  padding: 0.5rem;
+  background: <<colour tiddler-background>>;
+  border: 0.2rem solid <<colour tag-background>>;
+  color: <<colour foreground>>;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.tc-board-item-content input {
+	width: 100%;
+	border: 1px solid <<colour muted-foreground>>;
+	border-radius: 2px;
+	margin-bottom: 2px;
+}
+.tc-board-item-content input + br + div {
+	width: 100%;
+	border-radius: 2px;
+}
+.tc-board-item.muuri-item-placeholder .tc-board-item-content {
+  border-style: dashed;
+  border-color: <<colour primary>>;
+}
+.tc-board-item.editing .tc-board-item-content {
+  border-color: <<colour primary>>;
+}
+.tc-board-item:focus-within .tc-board-item-content {
+  border: 0.2rem solid <<colour primary>>;
+  padding: 0.5rem;
+}
+.tc-board-item-title {
+  font-size: 1rem;
+  line-height: 1.2;
+  word-break: break-word;
+  caret-color: <<colour primary>>;
+  outline: none;
+  outline-offset: 0.5rem;
+  min-height: calc(1rem * 1.2);
+}
+.tc-board-item-handle {
+  position: absolute;
+  left: -0.25rem;
+  right: -0.25rem;
+  top: -0.25rem;
+  bottom: -0.25rem;
+  border-radius: 0.5rem;
+  cursor: move;
+}
+.tc-board-item.tc-editing .tc-board-item-handle {
+  display: none;
+}
+.tc-board-item-action {
+  position: absolute;
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0rem;
+  opacity: 0;
+  transform: scale(0, 0);
+  transition: transform 0.3s 0s ease-out, opacity 0.3s 0s linear;
+}
+.tc-board-item-action.tc-edit {
+  right: -1rem;
+  top: -1rem;
+}
+.tc-board-item:focus-within .tc-board-item-action.tc-edit {
+  right: -1rem;
+  top: -1rem;
+}
+.tc-board-item-action.tc-delete {
+  right: -1rem;
+  bottom: -0.5rem;
+}
+.tc-board-item:focus-within .tc-board-item-action.tc-delete {
+  right: -1rem;
+  bottom: -0.5rem;
+}
+.tc-board-item.tc-editing .tc-board-item-action.tc-delete {
+  display: none;
+}
+.tc-board-item-action.tc-close {
+	left: -0.5rem;
+	bottom: -0.5rem;
+}
+
+.tc-board-item.tc-editing .tc-board-item-action,
+.tc-board-item:hover .tc-board-item-action,
+.tc-board-column-header-wrapper:hover .tc-board-item-action,
+.tc-board-item:focus .tc-board-item-action,
+.tc-board-item.tc-muuri-dragging .tc-board-item-action,
+.tc-board-item.tc-muuri-releasing .tc-board-item-action {
+  opacity: 1;
+  transform: scale(1, 1);
+  transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s linear;
+}
+.tc-board-item.tc-editing .tc-board-item-action:hover,
+.tc-board-item:hover .tc-board-item-action:hover,
+.tc-board-item:focus .tc-board-item-action:hover,
+.tc-board-item.tc-muuri-dragging .tc-board-item-action:hover,
+.tc-board-item.tc-muuri-releasing .tc-board-item-action:hover {
+  transform: scale(1.2, 1.2);
+}
+.tc-board-item-action-icon {
+  flex-grow: 1;
+  pointer-events: none;
+}
+.tc-board-item.tc-editing .tc-board-item-action-icon.tc-icon-edit,
+.tc-board-item-action-icon.tc-icon-save {
+  display: none;
+}
+.tc-board-item.tc-editing .tc-board-item-action-icon.tc-icon-save {
+  display: block;
+}

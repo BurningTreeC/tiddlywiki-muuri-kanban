@@ -12,13 +12,13 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate
 			</$keyboard>
 		</div>
 		<div class="tc-board-item-action tc-edit">
-			<$button class="tc-btn-invisible">
+			<$button class="tc-btn-invisible" tooltip="save item" aria-label="save item">
 				<$action-sendmessage $message="tm-save-tiddler"/>
 				{{$:/core/images/save-button}}
 			</$button>
 		</div>
 		<div class="tc-board-item-action tc-delete">
-			<$button class="tc-btn-invisible">
+			<$button class="tc-btn-invisible" tooltip="cancel editing" aria-label="cancel editing">
 				<$action-sendmessage $message="tm-cancel-tiddler"/>
 				{{$:/core/images/cancel-button}}
 			</$button>

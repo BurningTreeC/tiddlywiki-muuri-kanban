@@ -26,11 +26,11 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate
 						</$keyboard>
 					</div>
 					<div style="position: absolute; right: 0; top: 0;">
-						<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>>>
+						<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>> tooltip="save column" aria-label="save column">
 							<$action-sendmessage $message="tm-save-tiddler"/>
 							{{$:/core/images/save-button}}
 						</$button>
-						<$button class="tc-btn-invisible tc-board-column-action tc-delete" style=<<get-styles>>>
+						<$button class="tc-btn-invisible tc-board-column-action tc-delete" style=<<get-styles>> tooltip="cancel editing" aria-label="cancel editing">
 							<$action-sendmessage $message="tm-cancel-tiddler"/>
 							{{$:/core/images/cancel-button}}
 						</$button>

@@ -1,5 +1,6 @@
 title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 
+\define get-item-tooltip(prefix) $prefix$ item $(currentTiddler)$
 <div class="tc-board-item">
 	<div class="tc-board-item-content">
 		<div class="tc-board-item-title">
@@ -12,19 +13,19 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 			<$transclude mode="block"/>
 		</div>
 		<div class="tc-board-item-action tc-edit">
-			<$button class="tc-btn-invisible">
+			<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "edit">> aria-label=<<get-item-tooltip "edit">>>
 				<$action-sendmessage $message="tm-edit-tiddler"/>
 				{{$:/core/images/edit-button}}
 			</$button>
 		</div>
 		<div class="tc-board-item-action tc-close">
-			<$button class="tc-btn-invisible">
+			<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "close">> aria-label=<<get-item-tooltip "close">>>
 				<$action-sendmessage $message="tm-close-tiddler"/>
 				{{$:/core/images/close-button}}
 			</$button>
 		</div>
 		<div class="tc-board-item-action tc-delete">
-			<$button class="tc-btn-invisible">
+			<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "delete">> aria-label=<<get-item-tooltip "delete">>>
 				<$action-sendmessage $message="tm-delete-tiddler"/>
 				{{$:/core/images/delete-button}}
 			</$button>

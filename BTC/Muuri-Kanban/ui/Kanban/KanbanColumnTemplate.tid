@@ -1,6 +1,7 @@
 title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 
 \whitespace trim
+\define get-column-tooltip(prefix) $prefix$ column $(currentTiddler)$
 \define get-history() $:/HistoryList/KanbanColumn/$(currentTiddler)$
 \define get-classes() tc-board-column $(currentTiddler)$
 \define get-board-column-styles() width: calc(100% / $(amount)$);
@@ -26,20 +27,20 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 								<$transclude field="caption"/>
 							</$list>
 						</div>
-						<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>>>
+						<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>> tooltip="new item" aria-label="new item">
 							<$action-sendmessage $message="tm-new-tiddler"/>
 							{{$:/core/images/new-button}}
 						</$button>
 						<$navigator story=<<tv-muuri-story-list>> history=<<tv-muuri-history-list>>>
-							<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>>>
+							<$button class="tc-btn-invisible tc-board-column-action tc-edit" style=<<get-styles>> tooltip=<<get-column-tooltip "edit">> aria-label=<<get-column-tooltip "edit">>>
 								<$action-sendmessage $message="tm-edit-tiddler"/>
 								{{$:/core/images/edit-button}}
 							</$button>
-							<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>>>
+							<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>> tooltip=<<get-column-tooltip "remove">> aria-label=<<get-column-tooltiop "remove">>>
 								<$action-sendmessage $message="tm-close-tiddler"/>
 								{{$:/core/images/close-button}}
 							</$button>
-							<$button class="tc-btn-invisible tc-board-column-action tc-delete" style=<<get-styles>>>
+							<$button class="tc-btn-invisible tc-board-column-action tc-delete" style=<<get-styles>> tooltip=<<get-column-tooltip "delete">> aria-label=<<get-column-tooltip "delete">>>
 								<$action-sendmessage $message="tm-delete-tiddler"/>
 								{{$:/core/images/delete-button}}
 							</$button>

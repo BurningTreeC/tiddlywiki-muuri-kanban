@@ -17,7 +17,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate
 				{{$:/core/images/save-button}}
 			</$button>
 		</div>
-		<div class="tc-board-item-action tc-delete">
+		<div class="tc-board-item-action tc-close">
 			<$button class="tc-btn-invisible" tooltip="cancel editing" aria-label="cancel editing">
 				<$action-sendmessage $message="tm-cancel-tiddler"/>
 				{{$:/core/images/cancel-button}}

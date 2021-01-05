@@ -2,20 +2,20 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanTemplate
 
 \define get-history-list() $:/HistoryList/Kanban/$(currentTiddler)$
 \whitespace trim
-<$navigator story=<<currentTiddler>> history=<<get-history-list>>>
-<div class="tc-board-container" data-board-container-title=<<currentTiddler>>>
-<$droppable actions="""<$action-navigate $to=<<actionTiddler>>/>""">
-<div class="tc-kanban-droppable">
-<$button class="tc-btn-invisible tc-board-column-action tc-add" tooltip="new column" aria-label="new column">
-<$action-sendmessage $message="tm-new-tiddler"/>
-{{$:/core/images/new-button}}
-</$button>
-</div>
-</$droppable>
-	<div class="tc-board">
-		<$vars tv-muuri-story-list=<<currentTiddler>> tv-muuri-history-list=<<get-history-list>>>
-			<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate" storyViewConfig="$:/config/kanban/"/>
-		</$vars>
+<$navigator story=<<currentTiddler>> history=<<get-history-list>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+	<div class="tc-board-container" data-board-container-title=<<currentTiddler>>>
+		<div class="tc-board">
+			<$vars tv-muuri-story-list=<<currentTiddler>> tv-muuri-history-list=<<get-history-list>>>
+				<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate" storyViewConfig="$:/config/kanban/"/>
+			</$vars>
+		</div>
 	</div>
-</div>
+	<$droppable actions="""<$action-navigate $to=<<actionTiddler>>/>""">
+		<div class="tc-kanban-droppable">
+			<$button class="tc-btn-invisible tc-board-column-action tc-add" tooltip="new column" aria-label="new column">
+				<$action-sendmessage $message="tm-new-tiddler"/>
+				{{$:/core/images/new-button}}
+			</$button>
+		</div>
+	</$droppable>
 </$navigator>

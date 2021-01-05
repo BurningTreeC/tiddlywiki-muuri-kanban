@@ -12,6 +12,12 @@ muuri-tiddler-width: 1
 	height: 75vh;
 }
 
+hr.tc-kanban-line {
+    border: 0;
+    height: 1px;
+    background: <<colour muted-foreground>>;
+}
+
 <$list filter="[all[tiddlers]prefix[$:/state/popup/more-]limit[1]]">
 
 .tc-board-container {
@@ -24,8 +30,22 @@ muuri-tiddler-width: 1
 	position: relative;
 	width: 100%;
 	font-size: 1.5rem;
-	border: 0.2rem dashed <<colour muted-foreground>>;
+	min-height: 2.2rem;
+	border: 0.2rem dashed transparent;
 	border-radius: 4px;
+}
+
+.tc-kanban-droppable button.tc-btn-invisible {
+	fill: <<colour tiddler-controls-foreground>>;
+	float: right;
+}
+
+.tc-kanban-droppable button.tc-btn-invisible:hover {
+	fill: <<colour tiddler-controls-foreground-hover>>;
+}
+
+.tc-dragover .tc-kanban-droppable {
+	border-color: <<colour dropzone-background>>;
 }
 
 .tc-board {
@@ -53,7 +73,7 @@ muuri-tiddler-width: 1
 
 		<<set-board-column-width>>
 
-	</$set>
+	</$vars>
 </$list>
 
 .tc-board-column.tc-muuri-releasing {
@@ -84,7 +104,10 @@ muuri-tiddler-width: 1
 	font-size: 1rem;
 	line-height: 2.5rem;
 	overflow: hidden;
-	padding: 0 1rem;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 1rem;
+	padding-right: 0.5rem;
 	text-align: center;
 	font-weight: 700;
 	font-style: italic;
@@ -143,9 +166,15 @@ muuri-tiddler-width: 1
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}
+
+<$list filter="[{$:/config/kanban/animations}!match[no]]">
+
+.tc-board-column-action {
 	transform: rotateZ(0deg);
 	transition: transform 0.2s ease-in-out;
 }
+
 .tc-board-column-action:hover {
 	transform: rotateZ(180deg);
 }
@@ -155,6 +184,8 @@ muuri-tiddler-width: 1
 .tc-board-column-action.tc-edit:hover, .tc-board-column-action.tc-delete:hover {
 	transform: rotateZ(360deg);
 }
+
+</$list>
 
 .tc-board-column-action:focus {
 	outline: 0;
@@ -276,27 +307,36 @@ muuri-tiddler-width: 1
 	transition: transform 0.3s 0s ease-out, opacity 0.3s 0s linear;
 }
 .tc-board-item-action.tc-edit {
-	right: -1rem;
-	top: -1rem;
+	right: -0.6rem;
+	top: -0.3rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-edit {
-	right: -1rem;
-	top: -1rem;
+	right: -0.6rem;
+	top: -0.3rem;
 }
 .tc-board-item-action.tc-delete {
-	right: -1rem;
-	bottom: -0.5rem;
+	left: 0rem;
+	bottom: -0.1rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-delete {
-	right: -1rem;
-	bottom: -0.5rem;
-}
-.tc-board-item.tc-editing .tc-board-item-action.tc-delete {
-	display: none;
+	left: 0rem;
+	bottom: -0.1rem;
 }
 .tc-board-item-action.tc-close {
-	left: -0.5rem;
-	bottom: -0.5rem;
+	right: -0.6rem;
+	bottom: -0.1rem;
+}
+.tc-board-item:focus-within .tc-board-item-action.tc-close {
+	right: -0.6rem;
+	bottom: -0.1rem;
+}
+.tc-board-item-action.tc-link {
+	top: -0.4rem;
+	left: 0rem;
+}
+.tc-board-item:focus-within .tc-board-item-action.tc-link {
+	top: -0.4rem;
+	left: 0rem;
 }
 
 .tc-board-item.tc-editing .tc-board-item-action,

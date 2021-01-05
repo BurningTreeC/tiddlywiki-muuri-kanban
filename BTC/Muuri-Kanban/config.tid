@@ -1,0 +1,3 @@
+title: $:/plugins/BTC/Muuri-Kanban/config
+
+<$checkbox tiddler="$:/config/kanban/animations" field="text" checked="yes" unchecked="no" default="yes">Enable animations for toolbar buttons</$checkbox>

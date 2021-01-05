@@ -80,6 +80,14 @@ hr.tc-kanban-line {
 	float: right;
 }
 
+.tc-board-item-toolbar button.tc-btn-invisible {
+	fill: <<colour tiddler-controls-foreground>>;
+}
+
+.tc-board-item-toolbar button.tc-btn-invisible:hover {
+	fill: <<colour tiddler-controls-foreground-hover>>;
+}
+
 .tc-board-column.tc-muuri-releasing {
 	z-index: 2;
 }

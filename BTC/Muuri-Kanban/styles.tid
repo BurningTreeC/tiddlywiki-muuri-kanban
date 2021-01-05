@@ -76,6 +76,10 @@ hr.tc-kanban-line {
 	</$vars>
 </$list>
 
+.tc-board-item-toolbar {
+	float: right;
+}
+
 .tc-board-column.tc-muuri-releasing {
 	z-index: 2;
 }
@@ -307,36 +311,36 @@ hr.tc-kanban-line {
 	transition: transform 0.3s 0s ease-out, opacity 0.3s 0s linear;
 }
 .tc-board-item-action.tc-edit {
-	right: -0.6rem;
-	top: -0.3rem;
+	right: -1.1rem;
+	top: -1rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-edit {
-	right: -0.6rem;
-	top: -0.3rem;
+	right: -1.1rem;
+	top: -1rem;
 }
 .tc-board-item-action.tc-delete {
-	left: 0rem;
-	bottom: -0.1rem;
+	left: -0.6rem;
+	bottom: -0.6rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-delete {
-	left: 0rem;
-	bottom: -0.1rem;
+	left: -0.6rem;
+	bottom: -0.6rem;
 }
 .tc-board-item-action.tc-close {
-	right: -0.6rem;
-	bottom: -0.1rem;
+	right: -1.1rem;
+	bottom: -0.6rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-close {
-	right: -0.6rem;
-	bottom: -0.1rem;
+	right: -1.1rem;
+	bottom: -0.6rem;
 }
 .tc-board-item-action.tc-link {
-	top: -0.4rem;
-	left: 0rem;
+	top: -0.9rem;
+	left: -0.5rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-link {
-	top: -0.4rem;
-	left: 0rem;
+	top: -0.9rem;
+	left: -0.5rem;
 }
 
 .tc-board-item.tc-editing .tc-board-item-action,

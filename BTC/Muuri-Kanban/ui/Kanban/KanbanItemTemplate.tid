@@ -4,6 +4,28 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 <div class="tc-board-item">
 	<$eventcatcher events="dblclick" actions-dblclick="""<$action-sendmessage $message="tm-edit-tiddler" $param=<<currentTiddler>>/>""">
 		<div class="tc-board-item-content">
+			<$list filter="[{$:/config/kanban/items/show-toolbar}match[yes]]" variable="ignore">
+				<div class="tc-board-item-toolbar">
+					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "edit">> aria-label=<<get-item-tooltip "edit">>>
+						<$action-sendmessage $message="tm-edit-tiddler"/>
+						{{$:/core/images/edit-button}}
+					</$button>
+					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "close">> aria-label=<<get-item-tooltip "close">>>
+						<$action-sendmessage $message="tm-close-tiddler"/>
+						{{$:/core/images/close-button}}
+					</$button>
+					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "delete">> aria-label=<<get-item-tooltip "delete">>>
+						<$action-sendmessage $message="tm-delete-tiddler"/>
+						{{$:/core/images/delete-button}}
+					</$button>
+					<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+						<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "open">> aria-label=<<get-item-tooltip "open">>>
+							<$action-navigate $to=<<currentTiddler>>/>
+							{{$:/core/images/link}}
+						</$button>
+					</$navigator>
+				</div>
+			</$list>
 			<div class="tc-board-item-title">
 				<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
 					<$transclude field="title"/>
@@ -15,32 +37,34 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 					<$transclude mode="block"/>
 				</$list>
 			</div>
-			<div class="tc-board-item-action tc-edit">
-				<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "edit">> aria-label=<<get-item-tooltip "edit">>>
-					<$action-sendmessage $message="tm-edit-tiddler"/>
-					{{$:/core/images/edit-button}}
-				</$button>
-			</div>
-			<div class="tc-board-item-action tc-close">
-				<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "close">> aria-label=<<get-item-tooltip "close">>>
-					<$action-sendmessage $message="tm-close-tiddler"/>
-					{{$:/core/images/close-button}}
-				</$button>
-			</div>
-			<div class="tc-board-item-action tc-delete">
-				<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "delete">> aria-label=<<get-item-tooltip "delete">>>
-					<$action-sendmessage $message="tm-delete-tiddler"/>
-					{{$:/core/images/delete-button}}
-				</$button>
-			</div>
-			<div class="tc-board-item-action tc-link">
-				<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "open">> aria-label=<<get-item-tooltip "open">>>
-						<$action-navigate $to=<<currentTiddler>>/>
-						{{$:/core/images/link}}
+			<$list filter="[{$:/config/kanban/items/show-toolbar}!match[yes]]" variable="ignore">
+				<div class="tc-board-item-action tc-edit">
+					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "edit">> aria-label=<<get-item-tooltip "edit">>>
+						<$action-sendmessage $message="tm-edit-tiddler"/>
+						{{$:/core/images/edit-button}}
 					</$button>
-				</$navigator>
-			</div>
+				</div>
+				<div class="tc-board-item-action tc-close">
+					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "close">> aria-label=<<get-item-tooltip "close">>>
+						<$action-sendmessage $message="tm-close-tiddler"/>
+						{{$:/core/images/close-button}}
+					</$button>
+				</div>
+				<div class="tc-board-item-action tc-delete">
+					<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "delete">> aria-label=<<get-item-tooltip "delete">>>
+						<$action-sendmessage $message="tm-delete-tiddler"/>
+						{{$:/core/images/delete-button}}
+					</$button>
+				</div>
+				<div class="tc-board-item-action tc-link">
+					<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+						<$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "open">> aria-label=<<get-item-tooltip "open">>>
+							<$action-navigate $to=<<currentTiddler>>/>
+							{{$:/core/images/link}}
+						</$button>
+					</$navigator>
+				</div>
+			</$list>
 		</div>
 	</$eventcatcher>
 </div>

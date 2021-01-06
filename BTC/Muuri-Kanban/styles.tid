@@ -318,6 +318,9 @@ hr.tc-kanban-line {
 	transform: scale(0, 0);
 	transition: transform 0.3s 0s ease-out, opacity 0.3s 0s linear;
 }
+.tc-board-item-action button.tc-btn-invisible:focus {
+	outline: 0;
+}
 .tc-board-item-action.tc-edit {
 	right: -1.1rem;
 	top: -0.9rem;

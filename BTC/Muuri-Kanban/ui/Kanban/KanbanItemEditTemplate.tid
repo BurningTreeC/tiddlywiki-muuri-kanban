@@ -1,7 +1,25 @@
 title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate
 
+\define save-button()
+<$button class="tc-btn-invisible" tooltip="save item" aria-label="save item">
+	<$action-sendmessage $message="tm-save-tiddler"/>
+	{{$:/core/images/save-button}}
+</$button>
+\end
+\define cancel-button()
+<$button class="tc-btn-invisible" tooltip="cancel editing" aria-label="cancel editing">
+	<$action-sendmessage $message="tm-cancel-tiddler"/>
+	{{$:/core/images/cancel-button}}
+</$button>
+\end
 <div class="tc-board-item">
 	<div class="tc-board-item-content">
+		<$list filter="[{$:/config/kanban/items/show-toolbar}match[yes]]" variable="ignore">
+			<div class="tc-board-item-toolbar">
+				<<save-button>>
+				<<cancel-button>>
+			</div>
+		</$list>
 		<div class="tc-board-item-title">
 			<$keyboard key="((save-tiddler))" message="tm-save-tiddler">
 				<$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
@@ -11,17 +29,13 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate
 				</$keyboard>
 			</$keyboard>
 		</div>
-		<div class="tc-board-item-action tc-edit">
-			<$button class="tc-btn-invisible" tooltip="save item" aria-label="save item">
-				<$action-sendmessage $message="tm-save-tiddler"/>
-				{{$:/core/images/save-button}}
-			</$button>
-		</div>
-		<div class="tc-board-item-action tc-close">
-			<$button class="tc-btn-invisible" tooltip="cancel editing" aria-label="cancel editing">
-				<$action-sendmessage $message="tm-cancel-tiddler"/>
-				{{$:/core/images/cancel-button}}
-			</$button>
-		</div>
+		<$list filter="[{$:/config/kanban/items/show-toolbar}!match[yes]]" variable="ignore">
+			<div class="tc-board-item-action tc-edit">
+				<<save-button>>
+			</div>
+			<div class="tc-board-item-action tc-close">
+				<<cancel-button>>
+			</div>
+		</$list>
 	</div>
 </div>

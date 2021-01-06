@@ -320,11 +320,11 @@ hr.tc-kanban-line {
 }
 .tc-board-item-action.tc-edit {
 	right: -1.1rem;
-	top: -1rem;
+	top: -0.9rem;
 }
 .tc-board-item:focus-within .tc-board-item-action.tc-edit {
 	right: -1.1rem;
-	top: -1rem;
+	top: -0.9rem;
 }
 .tc-board-item-action.tc-delete {
 	left: -0.6rem;

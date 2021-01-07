@@ -2,7 +2,7 @@
 	"title": "$:/plugins/BTC/Muuri-Kanban",
 	"description": "A Kanban based on Muuri",
 	"author": "Simon Huber",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"list": "readme license config",
 	"muuri-tiddler-width": "1"
 }

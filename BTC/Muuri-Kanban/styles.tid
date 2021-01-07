@@ -57,6 +57,8 @@ hr.tc-kanban-line {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	max-height: 100%;
+	min-height: 100%;
 }
 
 .tc-board-column {

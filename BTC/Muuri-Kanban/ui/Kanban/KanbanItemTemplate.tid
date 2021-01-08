@@ -29,40 +29,47 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 \end
 <div class="tc-board-item">
 	<$eventcatcher events="dblclick" actions-dblclick="""<$action-sendmessage $message="tm-edit-tiddler" $param=<<currentTiddler>>/>""">
-		<div class="tc-board-item-content">
-			<$list filter="[{$:/config/kanban/items/show-toolbar}match[yes]]" variable="ignore">
-				<div class="tc-board-item-toolbar">
-					<<edit-button>>
-					<<close-button>>
-					<<delete-button>>
-					<<link-button>>
-				</div>
-			</$list>
-			<div class="tc-board-item-title">
-				<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
-					<$transclude field="title"/>
-					""">
-					<$transclude field="caption"/>
+		<$set name="borderStyle" value=<<get-item-styles>>>
+			<div class="tc-board-item-content" style={{{ [{$:/config/kanban/items/match-header-color}match[yes]then<borderStyle>else[]] }}}>
+				<$list filter="[{$:/config/kanban/items/show-toolbar}match[yes]]" variable="ignore">
+					<div class="tc-board-item-toolbar">
+						<<edit-button>>
+						<<close-button>>
+						<<delete-button>>
+						<<link-button>>
+					</div>
 				</$list>
-				<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
-					<hr class="tc-kanban-line">
-					<$transclude mode="block"/>
+				<div class="tc-board-item-title">
+					<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
+						<$transclude field="title"/>
+						""">
+						<$transclude field="caption"/>
+					</$list>
+					<$list filter="[{$:/config/kanban/items/show-tags}match[yes]]" variable="ignore">
+						<div class="tc-tags-wrapper">
+							<$list filter="[all[current]tags[]]" storyview="pop" template="$:/core/ui/TagTemplate"/>
+						</div>
+					</$list>
+					<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
+						<hr class="tc-kanban-line">
+						<$transclude mode="block"/>
+					</$list>
+				</div>
+				<$list filter="[{$:/config/kanban/items/show-toolbar}!match[yes]]" variable="ignore">
+					<div class="tc-board-item-action tc-edit">
+						<<edit-button>>
+					</div>
+					<div class="tc-board-item-action tc-close">
+						<<close-button>>
+					</div>
+					<div class="tc-board-item-action tc-delete">
+						<<delete-button>>
+					</div>
+					<div class="tc-board-item-action tc-link">
+						<<link-button>>
+					</div>
 				</$list>
 			</div>
-			<$list filter="[{$:/config/kanban/items/show-toolbar}!match[yes]]" variable="ignore">
-				<div class="tc-board-item-action tc-edit">
-					<<edit-button>>
-				</div>
-				<div class="tc-board-item-action tc-close">
-					<<close-button>>
-				</div>
-				<div class="tc-board-item-action tc-delete">
-					<<delete-button>>
-				</div>
-				<div class="tc-board-item-action tc-link">
-					<<link-button>>
-				</div>
-			</$list>
-		</div>
+		</$set>
 	</$eventcatcher>
 </div>

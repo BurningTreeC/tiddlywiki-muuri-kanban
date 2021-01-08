@@ -13,9 +13,9 @@ muuri-tiddler-width: 1
 }
 
 hr.tc-kanban-line {
-    border: 0;
-    height: 1px;
-    background: <<colour muted-foreground>>;
+	border: 0;
+	height: 1px;
+	background: <<colour muted-foreground>>;
 }
 
 <$list filter="[all[tiddlers]prefix[$:/state/popup/more-]limit[1]]">
@@ -221,7 +221,7 @@ hr.tc-kanban-line {
 .tc-board-column-items {
 	position: absolute;
 	left: 0;
- 	top: 0;
+	top: 0;
 	width: 100%;
 	min-height: 100%;
 	border-bottom: 1.5rem solid transparent;
@@ -248,6 +248,9 @@ hr.tc-kanban-line {
 	margin: 0;
 	opacity: 0.7;
 }
+.tc-board-item.tc-active {
+	z-index: 13;
+}
 
 .tc-board-item img, .tc-board-item hr {
 	pointer-events: none;
@@ -256,6 +259,15 @@ hr.tc-kanban-line {
 
 .tc-board-item svg {
 	max-width: 100%;
+}
+
+.tc-board-item .tc-tags-wrapper .tc-tag-list-item .tc-tag-label {
+	font-size: 0.75em;
+}
+
+.tc-board-item .tc-tags-wrapper .tc-tag-list-item .tc-drop-down {
+	font-size: 0.75em;
+	min-width: 100%;
 }
 
 .tc-board-item-content {

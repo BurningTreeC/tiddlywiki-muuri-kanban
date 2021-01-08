@@ -4,4 +4,8 @@ title: $:/plugins/BTC/Muuri-Kanban/config
 
 <$checkbox tiddler="$:/config/kanban/items/show-toolbar" field="text" checked="yes" unchecked="no" default="no"> Show the items-toolbar</$checkbox>
 
+<$checkbox tiddler="$:/config/kanban/items/show-tags" field="text" checked="yes" unchecked="no" default="no"> Show tags on items</$checkbox>
+
+<$checkbox tiddler="$:/config/kanban/items/match-header-color" field="text" checked="yes" unchecked="no" default="no"> Show the item-borders in the color of the column header</$checkbox>
+
 <$checkbox tiddler="$:/config/kanban/auto-save-wiki" field="text" checked="yes" unchecked="no" default="no" checkactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="yes"/>""" uncheckactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="no"/>"""> Enable ~AutoSaving</$checkbox>

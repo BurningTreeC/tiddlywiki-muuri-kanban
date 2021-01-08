@@ -6,6 +6,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 \define get-classes() tc-board-column $(currentTiddler)$
 \define get-board-column-styles() width: calc(100% / $(amount)$);
 \define get-styles() background-color: $(bgColor)$; border-color: $(bgColor)$; color: $(foregroundColor)$; fill: $(foregroundColor)$;
+\define get-item-styles() border-color: $(bgColor)$;
 \define get-foreground-color-inner(colour,colourA,colourB)
 <$macrocall $name="contrastcolour" target="""$colour$""" colourA="""$colourA$""" colourB="""$colourB$"""/>
 \end

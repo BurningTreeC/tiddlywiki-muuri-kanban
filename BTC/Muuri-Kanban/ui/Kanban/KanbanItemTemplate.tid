@@ -1,6 +1,7 @@
 title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 
 \define get-item-tooltip(prefix) $prefix$ item $(currentTiddler)$
+\define title-styles() fill: $(foregroundColor)$;
 \define edit-button()
 <$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "edit">> aria-label=<<get-item-tooltip "edit">>>
 	<$action-sendmessage $message="tm-edit-tiddler"/>
@@ -40,6 +41,15 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 					</div>
 				</$list>
 				<div class="tc-board-item-title">
+					<$set name="foregroundColor" value={{!!color}}>
+						<$list filter="[all[current]has[icon]] ~[[$:/config/DefaultTiddlerIcon]has[text]]">
+							<span class="tc-tiddler-title-icon" style=<<title-styles>>>
+								<$transclude tiddler={{!!icon}}>
+									<$transclude tiddler={{$:/config/DefaultTiddlerIcon}}/>
+								</$transclude>
+							</span>
+						</$list>
+					</$set>
 					<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
 						<$transclude field="title"/>
 						""">

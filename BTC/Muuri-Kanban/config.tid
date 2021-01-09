@@ -9,3 +9,11 @@ title: $:/plugins/BTC/Muuri-Kanban/config
 <$checkbox tiddler="$:/config/kanban/items/match-header-color" field="text" checked="yes" unchecked="no" default="no"> Show the item-borders in the color of the column header</$checkbox>
 
 <$checkbox tiddler="$:/config/kanban/auto-save-wiki" field="text" checked="yes" unchecked="no" default="no" checkactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="yes"/>""" uncheckactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="no"/>"""> Enable ~AutoSaving</$checkbox>
+
+!!! Configure the top margin of items
+
+<$edit-text tiddler="$:/config/kanban/items/margin-top" tag="input" default=""/>
+
+!!! Configure the right/left margin of items
+
+<$edit-text tiddler="$:/config/kanban/items/margin" tag="input" default=""/>

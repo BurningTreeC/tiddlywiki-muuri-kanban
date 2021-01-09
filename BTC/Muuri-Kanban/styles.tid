@@ -229,8 +229,11 @@ hr.tc-kanban-line {
 
 .tc-board-item {
 	position: absolute;
-	width: calc(100% - 1rem);
-	margin: 0.5rem 0.5rem 0 0.5rem;
+	width: calc(100% - (2 * {{$:/config/kanban/items/margin}}));
+	margin-top: {{$:/config/kanban/items/margin-top}};
+	margin-right: {{$:/config/kanban/items/margin}};
+	margin-left: {{$:/config/kanban/items/margin}};
+	margin-bottom: 0;
 	z-index: 10;
 }
 .tc-board-item.tc-muuri-releasing {
@@ -270,6 +273,27 @@ hr.tc-kanban-line {
 	min-width: 100%;
 }
 
+.tc-board-item .tc-tiddler-title-icon svg {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.tc-board-item .tc-edit-tags input.tc-edit-texteditor {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
+	outline: none;
+}
+
+.tc-board-item .tc-edit-texteditor {
+	margin: 4px 0 4px 0;
+}
+
+.tc-board-item input.tc-edit-texteditor {
+	padding: 3px 3px 3px 3px;
+}
+
 .tc-board-item-content {
 	position: relative;
 	padding: 0.5rem;
@@ -286,8 +310,12 @@ hr.tc-kanban-line {
 	border-radius: 2px;
 	margin-bottom: 2px;
 }
-.tc-board-item-content input + br + div {
+.tc-board-item-content input + br + div, .tc-board-item-content .tc-edit-tags + div {
 	width: 100%;
+	border-radius: 2px;
+}
+.tc-board-item-content .tc-edit-tags {
+	margin-bottom: 2px;
 	border-radius: 2px;
 }
 .tc-board-item.muuri-item-placeholder .tc-board-item-content {

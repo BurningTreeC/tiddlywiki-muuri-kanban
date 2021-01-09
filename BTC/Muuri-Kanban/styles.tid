@@ -338,6 +338,10 @@ hr.tc-kanban-line {
 	outline-offset: 0.5rem;
 	min-height: calc(1rem * 1.2);
 }
+.tc-board-item-text {
+	font-size: 0.9rem;
+	line-height: 1.1rem;
+}
 .tc-board-item-handle {
 	position: absolute;
 	left: -0.25rem;

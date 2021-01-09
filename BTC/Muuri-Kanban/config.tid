@@ -17,3 +17,11 @@ title: $:/plugins/BTC/Muuri-Kanban/config
 !!! Configure the right/left margin of items
 
 <$edit-text tiddler="$:/config/kanban/items/margin" tag="input" default=""/>
+
+!!! Configure the text-fontsize of items
+
+<$edit-text tiddler="$:/config/kanban/items/text-fontsize" tag="input" default=""/>
+
+!!! Configure the text-lineheight of items
+
+<$edit-text tiddler="$:/config/kanban/items/text-lineheight" tag="input" default=""/>

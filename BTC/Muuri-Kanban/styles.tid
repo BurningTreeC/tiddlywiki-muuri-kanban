@@ -127,7 +127,7 @@ hr.tc-kanban-line {
 	font-style: italic;
 	background: <<colour tiddler-background>>;
 	color: <<colour foreground>>;
-	border-radius: 0.2rem;
+	border-radius: {{$:/config/kanban/headers/border-radius}};
 	border: 0.2rem solid <<colour foreground>>;
 }
 .tc-board-column-header.tc-board-column-edit-header {
@@ -300,7 +300,7 @@ hr.tc-kanban-line {
 	background: <<colour tiddler-background>>;
 	border: 0.2rem solid <<colour tag-background>>;
 	color: <<colour foreground>>;
-	border-radius: 4px;
+	border-radius: {{$:/config/kanban/items/border-radius}};
 	font-size: 1rem;
 	font-weight: 400;
 }

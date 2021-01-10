@@ -29,3 +29,11 @@ title: $:/plugins/BTC/Muuri-Kanban/config
 !!! Configure the text-fontweight of items
 
 <$edit-text tiddler="$:/config/kanban/items/text-fontweight" tag="input" default=""/>
+
+!!! Configure the border-radius of the items
+
+<$edit-text tiddler="$:/config/kanban/items/border-radius" tag="input" default=""/>
+
+!!! Configure the border-radius of the column-headers
+
+<$edit-text tiddler="$:/config/kanban/headers/border-radius" tag="input" default=""/>

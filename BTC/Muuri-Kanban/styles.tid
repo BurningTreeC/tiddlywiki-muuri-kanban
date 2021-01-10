@@ -310,7 +310,7 @@ hr.tc-kanban-line {
 	border-radius: 2px;
 	margin-bottom: 2px;
 }
-.tc-board-item-content input + br + div, .tc-board-item-content .tc-edit-tags + div, .tc-board-item-content input + br + div > .CodeMirror {
+.tc-board-item-content input + br + div, .tc-board-item-content .tc-edit-tags + div, .tc-board-item-content input + br + div > .CodeMirror, .tc-board-item-content textarea {
 	width: 100%;
 	border-radius: 2px;
 }

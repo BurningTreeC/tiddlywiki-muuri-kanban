@@ -24,12 +24,12 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate
 			<div class="tc-board-item-title">
 				<$keyboard key="((save-tiddler))" message="tm-save-tiddler">
 					<$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
-						<$edit-text field="draft.title" tag="input" placeholder=" title" focus="true" tabindex="1"/><br>
-						<$edit-text field="caption" tag="input" placeholder=" caption" tabindex="1"/><br>
+						<$edit-text field="draft.title" tag="input" placeholder=" title" focus="true" tabindex="1" cancelPopups="yes"/><br>
+						<$edit-text field="caption" tag="input" placeholder=" caption" tabindex="1" cancelPopups="yes"/><br>
 						<$list filter="[{$:/config/kanban/items/show-tags}match[yes]]" variable="ignore">
 							{{||$:/core/ui/EditTemplate/tags}}
 						</$list>
-						<$edit field="text" default="" placeholder=" text" tabindex="1"/>
+						<$edit field="text" default="" placeholder=" text" tabindex="1" cancelPopups="yes"/>
 					</$keyboard>
 				</$keyboard>
 			</div>

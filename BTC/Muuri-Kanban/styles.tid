@@ -339,7 +339,9 @@ hr.tc-kanban-line {
 	min-height: calc(1rem * 1.2);
 }
 .tc-board-item-text {
+	margin-top: 0.5rem;
 	font-size: {{$:/config/kanban/items/text-fontsize}};
+	font-weight: {{$:/config/kanban/items/text-fontweight}};
 	line-height: {{$:/config/kanban/items/text-lineheight}};
 }
 .tc-board-item-handle {

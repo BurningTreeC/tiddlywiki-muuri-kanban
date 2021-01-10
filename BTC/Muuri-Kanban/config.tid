@@ -25,3 +25,7 @@ title: $:/plugins/BTC/Muuri-Kanban/config
 !!! Configure the text-lineheight of items
 
 <$edit-text tiddler="$:/config/kanban/items/text-lineheight" tag="input" default=""/>
+
+!!! Configure the text-fontweight of items
+
+<$edit-text tiddler="$:/config/kanban/items/text-fontweight" tag="input" default=""/>

@@ -61,7 +61,6 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 						</div>
 					</$list>
 					<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
-						<hr class="tc-kanban-line">
 						<div class="tc-board-item-text">
 							<$transclude mode="block"/>
 						</div>

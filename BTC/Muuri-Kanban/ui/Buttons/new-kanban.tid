@@ -2,7 +2,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/Buttons/new-kanban
 tags: $:/tags/PageControls
 
 \define new-kanban-actions()
-<$action-createtiddler $basetitle="New Kanban" $savetitle="$:/temp/new-kanban" $template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanTemplate" muuri-tiddler-width="1"/>
+<$action-createtiddler $basetitle="New Kanban" $savetitle="$:/temp/new-kanban" text="{{||$:/plugins/BTC/Muuri-Kanban/ui/KanbanTemplate}}" muuri-tiddler-width="1"/>
 <$action-sendmessage $message="tm-edit-tiddler" $param={{$:/temp/new-kanban}}/>
 \end
 \whitespace trim

@@ -1,6 +1,10 @@
 title: $:/plugins/BTC/Muuri-Kanban/config
+tags: $:/tags/ControlPanel/Appearance
+caption: Muuri-Kanban
 
 <$checkbox tiddler="$:/config/kanban/animations" field="text" checked="yes" unchecked="no" default="yes"> Enable animations for toolbar buttons</$checkbox>
+
+<$checkbox tiddler="$:/config/kanban/horizontal" field="text" checked="yes" unchecked="no" default="no"> Enable horizontal scrolling for Kanbans</$checkbox>
 
 <$checkbox tiddler="$:/config/kanban/items/show-toolbar" field="text" checked="yes" unchecked="no" default="no"> Show the items-toolbar</$checkbox>
 
@@ -9,6 +13,10 @@ title: $:/plugins/BTC/Muuri-Kanban/config
 <$checkbox tiddler="$:/config/kanban/items/match-header-color" field="text" checked="yes" unchecked="no" default="no"> Show the item-borders in the color of the column header</$checkbox>
 
 <$checkbox tiddler="$:/config/kanban/auto-save-wiki" field="text" checked="yes" unchecked="no" default="no" checkactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="yes"/>""" uncheckactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="no"/>"""> Enable ~AutoSaving</$checkbox>
+
+!!! Configure the width of Kanban columns when horizontal scrolling is enabled
+
+<$edit-text tiddler="$:/config/kanban/column-width" tag="input" default=""/>
 
 !!! Configure the top margin of items
 

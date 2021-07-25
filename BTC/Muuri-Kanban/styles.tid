@@ -3,14 +3,26 @@ tags: $:/tags/Stylesheet
 muuri-tiddler-width: 1
 
 \define set-board-column-width()
-[data-board-container-title="$(cssEscapedTitle)$"] .tc-board-column {
-	width: calc(100% / $(count)$);
-}
+<$list filter="[{$:/config/kanban/horizontal}match[no]]" emptyMessage="""
+	[data-board-container-title="$(cssEscapedTitle)$"] .tc-board-column {
+		width: {{$:/config/kanban/column-width}};
+	}
+""">
+	[data-board-container-title="$(cssEscapedTitle)$"] .tc-board-column {
+		width: calc(100% / $(count)$);
+	}
+</$list>
 \end
 .tc-board-container {
 	position: relative;
 	height: 75vh;
 }
+
+<$list filter="[{$:/config/kanban/horizontal}match[yes]]">
+	.tc-board-container {
+		overflow-x: auto;
+	}
+</$list>
 
 hr.tc-kanban-line {
 	border: 0;
@@ -304,7 +316,7 @@ hr.tc-kanban-line {
 	font-size: 1rem;
 	font-weight: 400;
 }
-.tc-board-item-content input {
+.tc-board-item-content input:not(input[type="checkbox"]) {
 	width: 100%;
 	border: 1px solid <<colour muted-foreground>>;
 	border-radius: 2px;

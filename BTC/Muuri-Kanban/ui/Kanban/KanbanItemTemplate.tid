@@ -16,7 +16,9 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 \end
 \define delete-button()
 <$button class="tc-btn-invisible" tooltip=<<get-item-tooltip "delete">> aria-label=<<get-item-tooltip "delete">>>
-	<$action-sendmessage $message="tm-delete-tiddler"/>
+	<$action-confirm $message="Do you wish to delete the card?">
+		<$action-sendmessage $message="tm-delete-tiddler"/>
+	</$action-confirm>
 	{{$:/core/images/delete-button}}
 </$button>
 \end

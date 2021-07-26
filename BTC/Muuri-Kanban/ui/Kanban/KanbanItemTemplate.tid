@@ -53,9 +53,23 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 						</$list>
 					</$set>
 					<$list filter="[{!!caption}!match[]]" variable="ignore" emptyMessage="""
-						<$transclude field="title"/>
+						<$list filter="[{$:/config/kanban/titles-as-links}match[yes]]" variable="ignore">
+							<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+								<$link><$transclude field="title"/></$link>
+							</$navigator>
+						</$list>
+						<$list filter="[{$:/config/kanban/titles-as-links}!match[yes]]" variable="ignore">
+							<$transclude field="title"/>
+						</$list>
 						""">
-						<$transclude field="caption"/>
+						<$list filter="[{$:/config/kanban/titles-as-links}match[yes]]" variable="ignore">
+							<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+								<$link><$transclude field="caption"/></$link>
+							</$navigator>
+						</$list>
+						<$list filter="[{$:/config/kanban/titles-as-links}!match[yes]]" variable="ignore">
+							<$transclude field="caption"/>
+						</$list>
 					</$list>
 					<$list filter="[{$:/config/kanban/items/show-tags}match[yes]]" variable="ignore">
 						<div class="tc-tags-wrapper">
@@ -63,9 +77,18 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 						</div>
 					</$list>
 					<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
-						<div class="tc-board-item-text">
-							<$transclude mode="block"/>
-						</div>
+						<$list filter="[{$:/config/kanban/open-links-outside}match[yes]]" variable="ignore">
+							<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+								<div class="tc-board-item-text">
+									<$transclude mode="block"/>
+								</div>
+							</$navigator>
+						</$list>
+						<$list filter="[{$:/config/kanban/open-links-outside}!match[yes]]" variable="ignore">
+							<div class="tc-board-item-text">
+								<$transclude mode="block"/>
+							</div>
+						</$list>
 					</$list>
 				</div>
 				<$list filter="[{$:/config/kanban/items/show-toolbar}!match[yes]]" variable="ignore">

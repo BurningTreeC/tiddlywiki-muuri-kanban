@@ -13,12 +13,18 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 \define get-foreground-color(palette)
 <$macrocall $name="get-foreground-color-inner" colour={{!!color}} colourA={{$palette$##foreground}} colourB={{$palette$##background}}/>
 \end
+\define get-drop-actions()
+<$vars prefix="[[" suffix="]]">
+	<$action-listops $tiddler=<<actionTiddler>> $field="kanban-history" $subfilter={{{ [<prefix>addsuffix<now YYYY0MM0DD-0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix<suffix>] }}}/>
+	$(dropActions)$
+</$vars>
+\end
 <$vars bgColor={{!!color}} palette={{$:/palette}}>
 	<$wikify name="foregroundColor" text="""<$macrocall $name="get-foreground-color" palette=<<palette>>/>""">
 		<$navigator story=<<currentTiddler>> history=<<get-history>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 			<div class=<<get-classes>>>
 				<div class="tc-board-column-content">
-					<$droppable actions="""<$action-navigate $to=<<actionTiddler>>/>""">
+					<$droppable actions="""<$vars prefix="[[" suffix="]]"><$action-listops $tiddler=<<actionTiddler>> $field="kanban-history" $subfilter={{{ [<prefix>addsuffix<now YYYY0MM0DD-0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix<suffix>] }}}/></$vars><$action-navigate $to=<<actionTiddler>>/>""">
 						<div class="tc-board-column-header-wrapper">
 							<div class="tc-board-column-header" style=<<get-styles>>>
 								<div class="tc-board-column-title">
@@ -29,7 +35,13 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 									</$list>
 								</div>
 								<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>> tooltip="new item" aria-label="new item">
-									<$action-sendmessage $message="tm-new-tiddler"/>
+									<!--<$action-sendmessage $message="tm-new-tiddler"/>-->
+									<$vars prefix="[[" suffix="]]">
+										<$action-createtiddler $basetitle={{$:/language/DefaultNewTiddlerTitle}} kanban-history={{{ [<prefix>addsuffix<now YYYY0MM0DD-0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix<suffix>] }}}>
+											<$action-navigate $to=<<createTiddler-title>>/>
+											<$action-sendmessage $message="tm-edit-tiddler" $param=<<createTiddler-title>>/>
+										</$action-createtiddler>
+									</$vars>
 									{{$:/core/images/new-button}}
 								</$button>
 								<$navigator story=<<tv-muuri-story-list>> history=<<tv-muuri-history-list>>>
@@ -53,10 +65,12 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 					</$droppable>
 					<div class="tc-board-column-items-container">
 						<$set name="tv-muuri-story-list" value=<<currentTiddler>>>
-							<$set name="tv-muuri-drop-actions" value={{!!drop-actions}}>
-								<div class="tc-board-column-items">
-									<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate" storyViewConfig="$:/config/kanban/items/"/>
-								</div>
+							<$set name="dropActions" value={{!!drop-actions}}>
+								<$set name="tv-muuri-drop-actions" value=<<get-drop-actions>>>
+									<div class="tc-board-column-items">
+										<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate" storyViewConfig="$:/config/kanban/items/"/>
+									</div>
+								</$set>
 							</$set>
 						</$set>
 					</div>

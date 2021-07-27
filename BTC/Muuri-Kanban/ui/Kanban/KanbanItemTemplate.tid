@@ -30,6 +30,47 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 	</$button>
 </$navigator>
 \end
+\define kanban-history-list()
+<$set name="kanbanHistoryInfoState" value=<<qualify "$:/state/kanban-history-list">>>
+	<$reveal type="match" state=<<kanbanHistoryInfoState>> text="" default="">
+		<$button class="tc-btn-invisible" tooltip="kanban history" aria-label="kanban history" set=<<kanbanHistoryInfoState>> setTo="yes">
+			{{$:/core/images/info-button}}
+		</$button><br>
+	</$reveal>
+	<$reveal type="nomatch" state=<<kanbanHistoryInfoState>> text="" default="">
+		<$button class="tc-btn-invisible tc-selected" tooltip="kanban history" aria-label="kanban history" set=<<kanbanHistoryInfoState>> setTo="">
+			{{$:/core/images/info-button}}
+		</$button><br>
+	</$reveal>
+	<$reveal type="nomatch" text="" default="" state=<<kanbanHistoryInfoState>> class="tc-popup-handle" animate="yes" retain="yes">
+		<$set name="historyList" value={{!!kanban-history}}>
+			<$list filter="[enlist<historyList>]" variable="currentHistory">
+				<$set name="previousHistory" value={{{ [enlist<historyList>before<currentHistory>] }}}>
+					<$set name="timestamp" value={{{ [<currentHistory>splitbefore[,]removesuffix[,]] }}}>
+						<$set name="column" value={{{ [<currentHistory>removeprefix<timestamp>removeprefix[,column: ]splitbefore[,]removesuffix[,]] }}}>
+							<$set name="addedCreatedOrMoved" value={{{ [<currentHistory>removeprefix<timestamp>removeprefix[,column: ]removeprefix<column>removeprefix[,]] }}}>
+								<$list filter="[<addedCreatedOrMoved>match[added]]" variable="ignore">
+									<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="added to: "/><$text text=<<column>>/><br>
+								</$list>
+								<$list filter="[<addedCreatedOrMoved>match[created]]" variable="ignore">
+									<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="created at: "/><$text text=<<column>>/><br>
+								</$list>
+								<$list filter="[<addedCreatedOrMoved>match[moved]]" variable="ignore">
+									<$set name="fromColumnTimestamp" value={{{ [<previousHistory>splitbefore[,]removesuffix[,]] }}}>
+										<$set name="fromColumn" value={{{ [<previousHistory>removeprefix<fromColumnTimestamp>removeprefix[,column: ]splitbefore[,]removesuffix[,]] }}}>
+											<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="moved from: "/><$text text=<<fromColumn>>/><$text text=" to: "/><$text text=<<column>>/><br>
+										</$set>
+									</$set>
+								</$list>
+							</$set>
+						</$set>
+					</$set>
+				</$set>
+			</$list>
+		</$set>
+	</$reveal>
+</$set>
+\end
 <div class="tc-board-item">
 	<$eventcatcher events="dblclick" actions-dblclick="""<$action-sendmessage $message="tm-edit-tiddler" $param=<<currentTiddler>>/>""">
 		<$set name="borderStyle" value=<<get-item-styles>>>
@@ -76,19 +117,23 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 							<$list filter="[all[current]tags[]]" storyview="pop" template="$:/core/ui/TagTemplate"/>
 						</div>
 					</$list>
-					<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
-						<$list filter="[{$:/config/kanban/open-links-outside}match[yes]]" variable="ignore">
-							<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-								<div class="tc-board-item-text">
-									<$transclude mode="block"/>
-								</div>
-							</$navigator>
-						</$list>
-						<$list filter="[{$:/config/kanban/open-links-outside}!match[yes]]" variable="ignore">
+					<$list filter="[{$:/config/kanban/open-links-outside}match[yes]]" variable="ignore">
+						<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 							<div class="tc-board-item-text">
-								<$transclude mode="block"/>
+								<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
+									<$transclude mode="block"/><br>
+								</$list>
+								<<kanban-history-list>>
 							</div>
-						</$list>
+						</$navigator>
+					</$list>
+					<$list filter="[{$:/config/kanban/open-links-outside}!match[yes]]" variable="ignore">
+						<div class="tc-board-item-text">
+							<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
+								<$transclude mode="block"/><br>
+							</$list>
+							<<kanban-history-list>>
+						</div>
 					</$list>
 				</div>
 				<$list filter="[{$:/config/kanban/items/show-toolbar}!match[yes]]" variable="ignore">

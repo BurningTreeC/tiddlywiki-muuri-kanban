@@ -15,7 +15,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 \end
 \define get-drop-actions()
 <$vars prefix="[[" suffix="]]">
-	<$action-listops $tiddler=<<actionTiddler>> $field="kanban-history" $subfilter={{{ [<prefix>addsuffix<now YYYY0MM0DD0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix<suffix>] }}}/>
+	<$action-listops $tiddler=<<actionTiddler>> $field="kanban-history" $subfilter={{{ [<prefix>addsuffix<now YYYY0MM0DD0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix[,moved]addsuffix<suffix>] }}}/>
 	$(dropActions)$
 </$vars>
 \end
@@ -24,7 +24,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 		<$navigator story=<<currentTiddler>> history=<<get-history>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 			<div class=<<get-classes>>>
 				<div class="tc-board-column-content">
-					<$droppable actions="""<$vars prefix="[[" suffix="]]"><$action-listops $tiddler=<<actionTiddler>> $field="kanban-history" $subfilter={{{ [<prefix>addsuffix<now YYYY0MM0DD0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix<suffix>] }}}/></$vars><$action-navigate $to=<<actionTiddler>>/>""">
+					<$droppable actions="""<$vars prefix="[[" suffix="]]"><$action-listops $tiddler=<<actionTiddler>> $field="kanban-history" $subfilter={{{ [<prefix>addsuffix<now YYYY0MM0DD0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix[,added]addsuffix<suffix>] }}}/></$vars><$action-navigate $to=<<actionTiddler>>/>""">
 						<div class="tc-board-column-header-wrapper">
 							<div class="tc-board-column-header" style=<<get-styles>>>
 								<div class="tc-board-column-title">
@@ -37,7 +37,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 								<$button class="tc-btn-invisible tc-board-column-action tc-add" style=<<get-styles>> tooltip="new item" aria-label="new item">
 									<!--<$action-sendmessage $message="tm-new-tiddler"/>-->
 									<$vars prefix="[[" suffix="]]">
-										<$action-createtiddler $basetitle={{$:/language/DefaultNewTiddlerTitle}} kanban-history={{{ [<prefix>addsuffix<now YYYY0MM0DD0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix<suffix>] }}}>
+										<$action-createtiddler $basetitle={{$:/language/DefaultNewTiddlerTitle}} kanban-history={{{ [<prefix>addsuffix<now YYYY0MM0DD0hh0mm0ssXXX>addsuffix[,]addsuffix[column: ]addsuffix<currentTiddler>addsuffix[,created]addsuffix<suffix>] }}}>
 											<$action-navigate $to=<<createTiddler-title>>/>
 											<$action-sendmessage $message="tm-edit-tiddler" $param=<<createTiddler-title>>/>
 										</$action-createtiddler>

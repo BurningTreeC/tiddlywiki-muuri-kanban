@@ -51,10 +51,10 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 						<$set name="column" value={{{ [<currentHistory>removeprefix<timestamp>removeprefix[,column: ]splitbefore[,]removesuffix[,]] }}}>
 							<$set name="addedCreatedOrMoved" value={{{ [<currentHistory>removeprefix<timestamp>removeprefix[,column: ]removeprefix<column>removeprefix[,]] }}}>
 								<$list filter="[<addedCreatedOrMoved>match[added]]" variable="ignore">
-									<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="added to: "/><$text text=<<column>>/><br>
+									<$text text={{{ [<timestamp>format:date[YYYY 0MM 0DD - 0hh:0mm:0ss]] }}}/> - <$text text="added to: "/><$text text=<<column>>/><br>
 								</$list>
 								<$list filter="[<addedCreatedOrMoved>match[created]]" variable="ignore">
-									<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="created at: "/><$text text=<<column>>/><br>
+									<$text text={{{ [<timestamp>format:date[YYYY 0MM 0DD - 0hh:0mm:0ss]] }}}/> - <$text text="created at: "/><$text text=<<column>>/><br>
 								</$list>
 								<$list filter="[<addedCreatedOrMoved>match[moved]]" variable="ignore">
 									<$set name="fromColumnTimestamp" value={{{ [<previousHistory>splitbefore[,]removesuffix[,]] }}}>

@@ -60,7 +60,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 									<$set name="fromColumnTimestamp" value={{{ [<previousHistory>splitbefore[,]removesuffix[,]] }}}>
 										<$set name="fromColumn" value={{{ [<previousHistory>removeprefix<fromColumnTimestamp>removeprefix[,column: ]splitbefore[,]removesuffix[,]] }}}>
 											<$set name="timestampDiff" value={{{ [<timestamp>subtract<fromColumnTimestamp>] }}}>
-												<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="moved from: "/><$text text=<<fromColumn>>/><$text text=" to: "/><$text text=<<column>>/><$text text="- duration: "/><$text text=<<timestampDiff>>/><br>
+												<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="moved from: "/><$text text=<<fromColumn>>/><$text text=" to: "/><$text text=<<column>>/><br>
 											</$set>
 										</$set>
 									</$set>

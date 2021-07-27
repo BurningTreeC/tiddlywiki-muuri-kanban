@@ -30,19 +30,20 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 	</$button>
 </$navigator>
 \end
+\define get-kanban-history-info-state() $:/state/kanban-history-list/$(currentTiddler)$
 \define kanban-history-list()
-<$set name="kanbanHistoryInfoState" value=<<qualify "$:/state/kanban-history-list">>>
-	<$reveal type="match" state=<<kanbanHistoryInfoState>> text="" default="">
-		<$button class="tc-btn-invisible" tooltip="kanban history" aria-label="kanban history" set=<<kanbanHistoryInfoState>> setTo="yes">
+<$set name="kanbanHistoryInfoState" value=<<get-kanban-history-info-state>>>
+	<$reveal type="match" stateTitle=<<kanbanHistoryInfoState>> text="" default="">
+		<$button class="tc-btn-invisible tc-kanban-history-button" tooltip="kanban history" aria-label="kanban history" setTitle=<<kanbanHistoryInfoState>> setTo="yes">
 			{{$:/core/images/info-button}}
 		</$button><br>
 	</$reveal>
-	<$reveal type="nomatch" state=<<kanbanHistoryInfoState>> text="" default="">
-		<$button class="tc-btn-invisible tc-selected" tooltip="kanban history" aria-label="kanban history" set=<<kanbanHistoryInfoState>> setTo="">
+	<$reveal type="nomatch" stateTitle=<<kanbanHistoryInfoState>> text="" default="">
+		<$button class="tc-btn-invisible tc-selected tc-kanban-history-button" tooltip="kanban history" aria-label="kanban history" set=<<kanbanHistoryInfoState>> setTo="">
 			{{$:/core/images/info-button}}
 		</$button><br>
 	</$reveal>
-	<$reveal type="nomatch" text="" default="" state=<<kanbanHistoryInfoState>> class="tc-popup-handle" animate="yes" retain="yes">
+	<$reveal type="nomatch" text="" default="" stateTitle=<<kanbanHistoryInfoState>> class="tc-popup-handle" animate="yes" retain="yes">
 		<$set name="historyList" value={{!!kanban-history}}>
 			<$list filter="[enlist<historyList>]" variable="currentHistory">
 				<$set name="previousHistory" value={{{ [enlist<historyList>before<currentHistory>] }}}>
@@ -58,7 +59,9 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 								<$list filter="[<addedCreatedOrMoved>match[moved]]" variable="ignore">
 									<$set name="fromColumnTimestamp" value={{{ [<previousHistory>splitbefore[,]removesuffix[,]] }}}>
 										<$set name="fromColumn" value={{{ [<previousHistory>removeprefix<fromColumnTimestamp>removeprefix[,column: ]splitbefore[,]removesuffix[,]] }}}>
-											<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="moved from: "/><$text text=<<fromColumn>>/><$text text=" to: "/><$text text=<<column>>/><br>
+											<$set name="timestampDiff" value={{{ [<timestamp>subtract<fromColumnTimestamp>] }}}>
+												<$text text={{{ [<timestamp>format:date[YYYY MM DD - hh:mm:ss]] }}}/> - <$text text="moved from: "/><$text text=<<fromColumn>>/><$text text=" to: "/><$text text=<<column>>/><$text text="- duration: "/><$text text=<<timestampDiff>>/><br>
+											</$set>
 										</$set>
 									</$set>
 								</$list>

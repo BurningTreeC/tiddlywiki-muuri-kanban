@@ -14,9 +14,9 @@ caption: Muuri-Kanban
 
 <$checkbox tiddler="$:/config/kanban/auto-save-wiki" field="text" checked="yes" unchecked="no" default="no" checkactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="yes"/>""" uncheckactions="""<$action-setfield $tiddler="$:/config/kanban/items/auto-save-wiki" text="no"/>"""> Enable ~AutoSaving</$checkbox>
 
-<$checkbox tiddler="$:/config/kanban/titles-as-links" field="text" checked="yes" unchecked="no" default="no">Show titles as links</$checkbox>
+<$checkbox tiddler="$:/config/kanban/titles-as-links" field="text" checked="yes" unchecked="no" default="no"> Show titles as links</$checkbox>
 
-<$checkbox tiddler="$:/config/kanban/open-links-outside" field="text" checked="yes" unchecked="no" default="yes">Open links in the Story River</$checkbox>
+<$checkbox tiddler="$:/config/kanban/open-links-outside" field="text" checked="yes" unchecked="no" default="yes"> Open links in the Story River</$checkbox>
 
 !!! Configure the width of Kanban columns when horizontal scrolling is enabled
 

@@ -124,7 +124,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 						<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 							<div class="tc-board-item-text">
 								<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
-									<$transclude mode="block"/><br>
+									<$transclude mode="block"/>
 								</$list>
 								<<kanban-history-list>>
 							</div>
@@ -133,7 +133,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate
 					<$list filter="[{$:/config/kanban/open-links-outside}!match[yes]]" variable="ignore">
 						<div class="tc-board-item-text">
 							<$list filter="[<currentTiddler>get[text]!match[]]" variable="ignore">
-								<$transclude mode="block"/><br>
+								<$transclude mode="block"/>
 							</$list>
 							<<kanban-history-list>>
 						</div>

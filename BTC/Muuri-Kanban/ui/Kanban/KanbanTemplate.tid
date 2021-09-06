@@ -6,7 +6,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanTemplate
 	<div class="tc-board-container tc-scrollable-element" data-board-container-title=<<currentTiddler>>>
 		<div class="tc-board">
 			<$vars tv-muuri-story-list=<<currentTiddler>> tv-muuri-history-list=<<get-history-list>>>
-				<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate" storyViewConfig="$:/config/kanban/"/>
+				<$list filter="[list<currentTiddler>]" storyview="muuri" template={{$:/config/muuri/kanban/ColumnTemplate}} editTemplate={{$:/config/muuri/kanban/ColumnEditTemplate}} storyViewConfig="$:/config/kanban/"/>
 			</$vars>
 		</div>
 	</div>

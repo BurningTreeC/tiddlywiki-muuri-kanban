@@ -68,7 +68,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 							<$set name="dropActions" value={{!!drop-actions}}>
 								<$set name="tv-muuri-drop-actions" value=<<get-drop-actions>>>
 									<div class="tc-board-column-items">
-										<$list filter="[list<currentTiddler>]" storyview="muuri" template="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemTemplate" editTemplate="$:/plugins/BTC/Muuri-Kanban/ui/KanbanItemEditTemplate" storyViewConfig="$:/config/kanban/items/"/>
+										<$list filter="[list<currentTiddler>]" storyview="muuri" template={{$:/config/muuri/kanban/ItemTemplate}} editTemplate={{$:/config/muuri/kanban/ItemEditTemplate}} storyViewConfig="$:/config/kanban/items/"/>
 									</div>
 								</$set>
 							</$set>

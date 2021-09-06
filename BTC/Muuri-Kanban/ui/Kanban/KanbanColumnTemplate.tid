@@ -63,7 +63,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 							</div>
 						</div>
 					</$droppable>
-					<div class="tc-board-column-items-container">
+					<div class="tc-board-column-items-container tc-scrollable-element">
 						<$set name="tv-muuri-story-list" value=<<currentTiddler>>>
 							<$set name="dropActions" value={{!!drop-actions}}>
 								<$set name="tv-muuri-drop-actions" value=<<get-drop-actions>>>

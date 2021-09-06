@@ -39,7 +39,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate
 					</div>
 				</div>
 				<$navigator story=<<currentTiddler>> history=<<get-history>>>
-					<div class="tc-board-column-items-container">
+					<div class="tc-board-column-items-container tc-scrollable-element">
 						<$set name="tv-muuri-story-list" value=<<currentTiddler>>>
 							<$set name="tv-muuri-drop-actions" value={{!!drop-actions}}>
 								<div class="tc-board-column-items">

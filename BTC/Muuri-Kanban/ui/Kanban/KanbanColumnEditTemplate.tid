@@ -12,7 +12,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnEditTemplate
 \end
 <$vars bgColor={{!!color}} palette={{$:/palette}}>
 	<$wikify name="foregroundColor" text="""<$macrocall $name="get-foreground-color" palette=<<palette>>/>""">
-		<div class="tc-board-column">
+		<div class="tc-board-column tc-preserve-height">
 			<div class="tc-board-column-content">
 				<div class="tc-board-column-header-wrapper">
 					<div class="tc-board-column-header tc-board-column-edit-header" style=<<get-styles>>>

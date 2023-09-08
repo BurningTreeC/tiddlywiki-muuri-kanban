@@ -3,7 +3,7 @@ title: $:/plugins/BTC/Muuri-Kanban/ui/KanbanColumnTemplate
 \whitespace trim
 \define get-column-tooltip(prefix) $prefix$ column $(currentTiddler)$
 \define get-history() $:/HistoryList/KanbanColumn/$(currentTiddler)$
-\define get-classes() tc-board-column $(currentTiddler)$
+\define get-classes() tc-board-column tc-preserve-height $(currentTiddler)$
 \define get-board-column-styles() width: calc(100% / $(amount)$);
 \define get-styles() background-color: $(bgColor)$; border-color: $(bgColor)$; color: $(foregroundColor)$; fill: $(foregroundColor)$;
 \define get-item-styles() border-color: $(bgColor)$;

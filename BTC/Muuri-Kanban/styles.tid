@@ -82,6 +82,10 @@ hr.tc-kanban-line {
 	z-index: 1;
 }
 
+.tc-drag-container .tc-board-column {
+	height: 75vh;
+}
+
 <$list filter="[all[tiddlers+shadows]has[list]]" variable="listItem">
 	<$vars count={{{ [list<listItem>count[]] }}} cssEscapedTitle={{{ [<listItem>escapecss[]] }}}>
 
